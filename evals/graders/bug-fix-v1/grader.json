@@ -1,0 +1,22 @@
+{
+  "schema": "coding-agent/eval-grader-v1",
+  "grader": {
+    "id": "bug-fix-v1-grader",
+    "version": "1.0.0"
+  },
+  "task": {
+    "id": "bug-fix-v1",
+    "version": "1.0.0"
+  },
+  "hidden_inputs": [
+    "hidden/criteria.json",
+    "hidden/runner.py",
+    "hidden/test_target.py",
+    "hidden/test_regression.py"
+  ],
+  "artifacts": {
+    "required": [
+      "candidate_workspace"
+    ]
+  }
+}

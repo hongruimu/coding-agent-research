@@ -1,0 +1,42 @@
+{
+  "schema": "coding-agent/eval-task-v1",
+  "task": {
+    "id": "bug-fix-v1",
+    "version": "1.0.0",
+    "kind": "bug_fix"
+  },
+  "environment": {
+    "fixture_revision": "bug-fix-fixture-v1",
+    "network": "disabled"
+  },
+  "agent_input": {
+    "instruction_path": "instruction.md",
+    "workspace_path": "workspace"
+  },
+  "grader": {
+    "id": "bug-fix-v1-grader",
+    "version": "1.0.0"
+  },
+  "constraints": {
+    "allowed_paths": [
+      "src/text_tools/slug.py"
+    ],
+    "forbidden_paths": [
+      ".git",
+      "pyproject.toml",
+      "tests"
+    ]
+  },
+  "budgets": {
+    "max_steps": 12,
+    "max_time_seconds": 90,
+    "max_tool_calls": 30,
+    "max_output_bytes": 8192,
+    "max_cost_usd": null
+  },
+  "artifacts": {
+    "required": [
+      "candidate_workspace"
+    ]
+  }
+}

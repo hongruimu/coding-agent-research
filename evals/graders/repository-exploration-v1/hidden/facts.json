@@ -1,0 +1,39 @@
+{
+  "schema": "coding-agent/repository-exploration-criteria-v1",
+  "task": {
+    "id": "repository-exploration-v1",
+    "version": "1.0.0"
+  },
+  "facts": [
+    {
+      "id": "python_requirement",
+      "value": ">=3.13",
+      "evidence": [
+        "pyproject.toml"
+      ]
+    },
+    {
+      "id": "package_directory",
+      "value": "src/repository_scout",
+      "evidence": [
+        "src/repository_scout/__init__.py"
+      ]
+    },
+    {
+      "id": "tested_callable",
+      "value": "build_catalog",
+      "evidence": [
+        "src/repository_scout/catalog.py",
+        "tests/test_catalog.py"
+      ]
+    },
+    {
+      "id": "test_framework",
+      "value": "pytest",
+      "evidence": [
+        "pyproject.toml",
+        "tests/test_catalog.py"
+      ]
+    }
+  ]
+}

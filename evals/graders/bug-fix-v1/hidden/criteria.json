@@ -1,0 +1,58 @@
+{
+  "schema": "coding-agent/bug-fix-criteria-v1",
+  "task": {
+    "id": "bug-fix-v1",
+    "version": "1.0.0"
+  },
+  "allowed_changes": [
+    "src/text_tools/slug.py"
+  ],
+  "baseline_files": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "728d10aca2ebce7e9f31f87c55ec8831228c00be721f4772bf237537e31c561a"
+    },
+    {
+      "path": "src/text_tools/__init__.py",
+      "sha256": "77ab62741834e5433fe7e6de9c1a9f884ec3c9be453e80b9794fbef260308466"
+    },
+    {
+      "path": "src/text_tools/slug.py",
+      "sha256": "7ab9f5a41c9227b58d8a55a592c671849a06a319aecdf307c0536f52f5a0161a"
+    },
+    {
+      "path": "tests/test_slug.py",
+      "sha256": "652a7787658f4832adf3264121572c4cafca6642dc00dacc01382757c31f9fe6"
+    }
+  ],
+  "limits": {
+    "timeout_seconds_per_group": 5,
+    "max_output_bytes_per_stream": 8192,
+    "max_candidate_files": 50,
+    "max_candidate_bytes": 65536
+  },
+  "test_runner": {
+    "path": "hidden/runner.py",
+    "sha256": "9062cad42a4558081b791f440eb2c18aa07665f21e974e7c1a4fa99a63d0cd3e"
+  },
+  "test_groups": [
+    {
+      "id": "public_regression",
+      "source": "workspace",
+      "path": "tests/test_slug.py",
+      "sha256": "652a7787658f4832adf3264121572c4cafca6642dc00dacc01382757c31f9fe6"
+    },
+    {
+      "id": "hidden_target",
+      "source": "grader",
+      "path": "hidden/test_target.py",
+      "sha256": "a0f33342c90fafb879d1d0b46ad17d2dc8893ca4a1cdafdca0577345295ade9b"
+    },
+    {
+      "id": "hidden_regression",
+      "source": "grader",
+      "path": "hidden/test_regression.py",
+      "sha256": "42d82b0f403ec269326dc9ba079dfa1c0d1ba44bf4b27e70f95750453338aadf"
+    }
+  ]
+}

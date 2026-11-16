@@ -1,0 +1,19 @@
+{
+  "schema": "coding-agent/eval-grader-v1",
+  "grader": {
+    "id": "repository-exploration-v1-grader",
+    "version": "1.0.0"
+  },
+  "task": {
+    "id": "repository-exploration-v1",
+    "version": "1.0.0"
+  },
+  "hidden_inputs": [
+    "hidden/facts.json"
+  ],
+  "artifacts": {
+    "required": [
+      "final_answer.json"
+    ]
+  }
+}

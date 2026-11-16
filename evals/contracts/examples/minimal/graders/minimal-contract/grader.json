@@ -1,0 +1,19 @@
+{
+  "schema": "coding-agent/eval-grader-v1",
+  "grader": {
+    "id": "minimal-contract-grader",
+    "version": "1.0.0"
+  },
+  "task": {
+    "id": "minimal-contract",
+    "version": "1.0.0"
+  },
+  "hidden_inputs": [
+    "hidden/criteria.json"
+  ],
+  "artifacts": {
+    "required": [
+      "final_answer.json"
+    ]
+  }
+}

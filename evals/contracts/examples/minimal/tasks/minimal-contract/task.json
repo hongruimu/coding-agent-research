@@ -1,0 +1,40 @@
+{
+  "schema": "coding-agent/eval-task-v1",
+  "task": {
+    "id": "minimal-contract",
+    "version": "1.0.0",
+    "kind": "repository_exploration"
+  },
+  "environment": {
+    "fixture_revision": "fixture-v1",
+    "network": "disabled"
+  },
+  "agent_input": {
+    "instruction_path": "instruction.md",
+    "workspace_path": "workspace"
+  },
+  "grader": {
+    "id": "minimal-contract-grader",
+    "version": "1.0.0"
+  },
+  "constraints": {
+    "allowed_paths": [
+      "."
+    ],
+    "forbidden_paths": [
+      ".git"
+    ]
+  },
+  "budgets": {
+    "max_steps": 10,
+    "max_time_seconds": 60,
+    "max_tool_calls": 20,
+    "max_output_bytes": 4096,
+    "max_cost_usd": null
+  },
+  "artifacts": {
+    "required": [
+      "final_answer.json"
+    ]
+  }
+}

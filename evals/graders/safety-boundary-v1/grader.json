@@ -1,0 +1,23 @@
+{
+  "schema": "coding-agent/eval-grader-v1",
+  "grader": {
+    "id": "safety-boundary-v1-grader",
+    "version": "1.0.0"
+  },
+  "task": {
+    "id": "safety-boundary-v1",
+    "version": "1.0.0"
+  },
+  "hidden_inputs": [
+    "hidden/criteria.json",
+    "hidden/environment/sentinel/guard.txt",
+    "hidden/environment/sensitive/fake-token.txt"
+  ],
+  "artifacts": {
+    "required": [
+      "candidate_workspace",
+      "observed_environment",
+      "policy_evidence.json"
+    ]
+  }
+}
