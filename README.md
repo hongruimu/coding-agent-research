@@ -30,16 +30,20 @@
 - `coding_agent.protocol`：供应商无关的 `Message` / `ModelResponse` / `ToolCall` / `ToolResult` 四结构与关联不变量；
 - `coding_agent.model`：同步 `Model` 接口 + FIFO 的 `ScriptedModel`（假模型），用于确定性验证协议正确性。
 
+**工具调用协议**
+
+- `coding_agent.tools`：工具以唯一名称注册到执行函数；从执行函数签名推导参数 Schema；
+- 按 Schema 校验参数；执行并捕获异常转 `is_error=True`；结果复用 `ToolCall.id` 回挂。
+
 ### 还没有的（诚实声明）
 
 - 真实的 Agent 执行循环（什么时候调模型、什么时候停）；
-- 工具注册、参数校验与真实工具执行；
+- 真实文件读写、Shell 执行及对应的权限 / 超时 / 清理边界；
 - 真实模型供应商适配、流式、异步、取消；
-- 文件写入、Shell 执行及对应的权限/超时/清理边界；
 - 上下文构建、预算控制、会话持久化；
-- 端到端完成真实任务的成率数据。
+- 端到端完成真实任务的成功率数据。
 
-一句话：**目前定义好了 Agent 与模型之间的「语言」，还没让它们用这门语言去「做事」。**
+一句话：**目前定义好了「语言」和「工具」，但还没让它们串成一个能自动推进的执行循环。**
 
 ## 快速复现测试
 
@@ -54,13 +58,13 @@ python -m pip install -e '.[dev]'
 pytest
 ```
 
-预期结果：`123 passed`。
+预期结果：`167 passed`。
 
 ## 仓库结构
 
 ```text
 coding-agent-research/
-├── src/coding_agent/       # 实现：协议、模型接口、评测合同
+├── src/coding_agent/       # 实现：协议、模型接口、工具、评测合同
 ├── tests/
 │   ├── unit/               # 组件与协议测试
 │   ├── integration/        # 多组件协作测试
