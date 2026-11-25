@@ -197,7 +197,13 @@ class ToolRegistry:
         return name in self._tools
 
     def execute(self, call: ToolCall) -> ToolResult:
-        """Validate a tool call, run the tool, and wrap its outcome as a result."""
+        """Validate a tool call, run the tool, and wrap its outcome as a result.
+
+        A ``ProtocolValidationError`` raised by the tool function propagates to
+        the caller (it is a request-invalid protocol error, not a result); any
+        other exception the function raises is captured as an ``is_error=True``
+        result.
+        """
 
         if call.name not in self:
             raise ToolNotFoundError(call.name)
@@ -207,6 +213,8 @@ class ToolRegistry:
 
         try:
             content = tool.function(**arguments)
+        except ProtocolValidationError:
+            raise
         except Exception as error:
             return ToolResult(
                 tool_call_id=call.id,

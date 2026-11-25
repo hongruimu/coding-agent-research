@@ -30,6 +30,10 @@ def _explodes() -> str:
     raise ValueError("boom")
 
 
+def _raises_protocol_error() -> str:
+    raise ProtocolValidationError("boundary violated")
+
+
 def _returns_non_str():
     return 42
 
@@ -147,6 +151,14 @@ def test_execute_exception_becomes_error_result_without_propagating() -> None:
     assert result.is_error is True
     assert "ValueError" in result.content
     assert "boom" in result.content
+
+
+def test_execute_propagates_protocol_error_from_function() -> None:
+    registry = ToolRegistry()
+    registry.register("raises_protocol_error", _raises_protocol_error)
+
+    with pytest.raises(ProtocolValidationError, match="boundary violated"):
+        registry.execute(_call("raises_protocol_error", {}))
 
 
 def test_execute_non_str_return_becomes_error_result() -> None:
